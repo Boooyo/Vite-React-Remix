@@ -3,7 +3,6 @@ import { installGlobals } from "@remix-run/node";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import react from "@vitejs/plugin-react";
-import babel from '@rollup/plugin-babel';
 
 installGlobals();
 
@@ -14,11 +13,10 @@ export default defineConfig({
     react({
       babel: {
         plugins: [
-          'babel-plugin-styled-components',
-          '@babel/plugin-transform-runtime',
+          "babel-plugin-styled-components",
+          "@babel/plugin-transform-runtime",
         ],
       },
     }),
-    babel({ babelHelpers: 'bundled' })
   ],
 });
