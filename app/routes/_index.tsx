@@ -1,13 +1,8 @@
-import type { MetaFunction } from "@remix-run/node";
+// app/routes/index.tsx
+import React from 'react';
+import { MetaFunction } from "@remix-run/node";
 
-export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
-
-export default function Index() {
+const Index: React.FC = () => {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1>Welcome to Remix</h1>
@@ -38,4 +33,13 @@ export default function Index() {
       </ul>
     </div>
   );
-}
+};
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "New Remix App" },
+    { name: "description", content: "Welcome to Remix!" },
+  ];
+};
+
+export default Index;

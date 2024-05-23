@@ -1,4 +1,4 @@
-/** @type {import('eslint').Linter.Config} */
+/** @type {import('eslint').Linter.Config}*/
 
 module.exports = {
   root: true,
@@ -16,7 +16,11 @@ module.exports = {
     es2021: true,
   },
   ignorePatterns: ["!**/.server", "!**/.client"],
-  extends: ["eslint:recommended", "plugin:prettier/recommended"],
+  extends: [
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "airbnb"
+  ],
   plugins: ["prettier"],
   rules: {
     "prettier/prettier": "error",
@@ -32,6 +36,7 @@ module.exports = {
         "plugin:react/jsx-runtime",
         "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended",
+        "airbnb"
       ],
       settings: {
         react: {
@@ -68,6 +73,7 @@ module.exports = {
         "plugin:@typescript-eslint/recommended",
         "plugin:import/recommended",
         "plugin:import/typescript",
+        "airbnb"
       ],
     },
 
