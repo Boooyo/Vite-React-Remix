@@ -1,12 +1,14 @@
 // app/routes/index.tsx
-import React from 'react';
-import { MetaFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
 
-const Index: React.FC = () => {
+export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
+    <div>
       <h1>Welcome to Remix</h1>
       <ul>
+        <li>
+          <Link to="/three">Three.js Page</Link>
+        </li>
         <li>
           <a
             target="_blank"
@@ -33,13 +35,4 @@ const Index: React.FC = () => {
       </ul>
     </div>
   );
-};
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
-
-export default Index;
+}
