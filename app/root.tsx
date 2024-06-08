@@ -1,29 +1,32 @@
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
+// app/root.tsx
+import { LinksFunction, MetaFunction } from "@remix-run/node";
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
+import globalStylesUrl from "./Styles/global.css";
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: globalStylesUrl }];
+};
+
+export const meta: MetaFunction = () => {
+  return [
+    { charset: "utf-8" },
+    { name: "viewport", content: "width=device-width,initial-scale=1" },
+    { title: "Remix App" }
+  ];
+};
+
+export default function Root() {
   return (
     <html lang="en">
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
       <body>
-        {children}
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   );
-}
-
-export default function App() {
-  return <Outlet />;
 }
