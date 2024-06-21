@@ -1,9 +1,15 @@
 // app/routes/three.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 const ThreeScene = () => {
+  const mountRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
+    const mount = mountRef.current;
+
+    if (!mount) return;
+
     // 씬 생성
     const scene = new THREE.Scene();
 
@@ -14,7 +20,7 @@ const ThreeScene = () => {
     // 렌더러 생성
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    mount.appendChild(renderer.domElement);
 
     // 큐브 생성
     const geometry = new THREE.BoxGeometry();
@@ -37,11 +43,12 @@ const ThreeScene = () => {
 
     // 클린업 함수
     return () => {
-      document.body.removeChild(renderer.domElement);
+      mount.removeChild(renderer.domElement);
+      renderer.dispose();
     };
   }, []);
 
-  return null;
+  return <div ref={mountRef} />;
 };
 
 export default function Three() {
